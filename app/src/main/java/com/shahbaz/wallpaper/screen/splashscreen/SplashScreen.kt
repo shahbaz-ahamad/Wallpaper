@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -35,7 +36,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 fun SplashScreen(
     modifier: Modifier = Modifier,
-    splashScreenViewmodel: SplashScreenViewmodel = hiltViewModel()
+    splashScreenViewmodel: SplashScreenViewmodel = hiltViewModel(),
+    onNavigateToHome: () -> Unit
 ) {
 
     val progress by splashScreenViewmodel.progress.collectAsStateWithLifecycle()
@@ -52,6 +54,13 @@ fun SplashScreen(
         }
     }
 
+
+    //navigate to the home screen when the progress is 1f
+    LaunchedEffect(key1 = progress) {
+        if (progress >= 1f) {
+            onNavigateToHome()
+        }
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -79,6 +88,8 @@ fun SplashScreen(
 @Composable
 private fun SplashScreenPreview() {
     WallpaperTheme {
-        SplashScreen()
+        SplashScreen(
+            onNavigateToHome = {}
+        )
     }
 }

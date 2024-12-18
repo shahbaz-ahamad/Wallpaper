@@ -22,9 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WallpaperTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SplashScreen(modifier = Modifier.padding(innerPadding))
-                }
+                WallpaperApp()
             }
         }
     }

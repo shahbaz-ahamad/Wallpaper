@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "2.1.0"
+
 }
 
 android {
@@ -62,12 +64,20 @@ dependencies {
 
 
     //dagger hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     //for the hiltviewmodel()
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    //serailzie
+    implementation(libs.kotlinx.serialization.json)
+
+    //for the shared layout
+    implementation(libs.androidx.animation)
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.navigation.compose)
 
 
 }
