@@ -84,12 +84,3 @@ fun SplashScreen(
 }
 
 
-@Preview
-@Composable
-private fun SplashScreenPreview() {
-    WallpaperTheme {
-        SplashScreen(
-            onNavigateToHome = {}
-        )
-    }
-}
